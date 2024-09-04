@@ -52,8 +52,10 @@ jobs:
           touch ~/.config/code-server/config.yaml
           echo "bind-addr: 127.0.0.1:8090" > ~/.config/code-server/config.yaml
           echo "auth: password" >> ~/.config/code-server/config.yaml
-          echo "password: ${{ secrets.code }}" >> ~/.config/code-server/config.yaml
+          echo "password: 4EPLv1yFPjZQcRa4QZo" >> ~/.config/code-server/config.yaml
+          #echo "password: ${{ secrets.code }}" >> ~/.config/code-server/config.yaml
           echo "cert: false" >> ~/.config/code-server/config.yaml
+          cat ~/.config/code-server/config.yaml
           sudo systemctl enable --now code-server@$USER
           sudo systemctl start code-server@$USER
           sudo systemctl status code-server@$USER
