@@ -17,7 +17,7 @@ start_time=$(date +%s)
 end_time=$((start_time + 1200))  # 180秒 = 3分钟
 
 # 要查找的文件路径
-file_path="~/1.txt"
+file_path="/home/runner/1.txt"
 
 while [[ $(date +%s) -lt $end_time && ! -f "$file_path" ]]; do
   # 在这里写要执行的命令
