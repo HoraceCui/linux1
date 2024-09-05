@@ -14,7 +14,7 @@ echo "sleep start"
 
 # 设置循环结束时间（3分钟后）
 start_time=$(date +%s)
-end_time=$((start_time + 1200))  # 180秒 = 3分钟
+end_time=$((start_time + 14400))  # 180秒 = 3分钟
 
 # 要查找的文件路径
 file_path="/home/runner/1.txt"
