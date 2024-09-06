@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
 # Controls when the workflow will run
@@ -30,42 +28,23 @@ jobs:
       # Runs a single command using the runners shell
       - name: script 1
         run: |
-          mkdir ~/.ssh
-          touch ~/.ssh/authorized_keys
-          chmod 700 ~/.ssh
-          chmod 600 ~/.ssh/authorized_keys
-          echo ${{ secrets.id_gt126 }} >> ~/.ssh/authorized_keys
-          sudo systemctl restart sshd.service
-
-      - name: cloudflare        
-        run:  |
-          echo "cloudflare start"
-          curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-          sudo dpkg -i cloudflared.deb
-          sudo cloudflared service install ${{ secrets.cloud_github_2 }}
-
-      - name: code-server        
-        run:  |
-          echo "code-server"
-          curl -fsSL https://code-server.dev/install.sh | sudo sh
-          mkdir -p ~/.config/code-server
-          touch ~/.config/code-server/config.yaml
-          echo "bind-addr: 127.0.0.1:8090" > ~/.config/code-server/config.yaml
-          echo "auth: password" >> ~/.config/code-server/config.yaml
-          echo "password: ${{ secrets.code }}" >> ~/.config/code-server/config.yaml
-          echo "cert: false" >> ~/.config/code-server/config.yaml
-          cat ~/.config/code-server/config.yaml
-          sudo systemctl enable --now code-server@$USER
-          sudo systemctl start code-server@$USER
-          sudo systemctl status code-server@$USER
-
-      # Runs a set of commands using the runners shell
-      - name: end shell script
-        run: |
           echo GITHUB_WORKSPACE
           cd ${GITHUB_WORKSPACE}
           pwd
           ls -al
-          echo end.sh start
-          bash end.sh
-          echo end.sh end
+          cat ${{ secrets.id_gt126 }} >> ./id_rsa1.pub
+          cat ${{ secrets.cloud_github_2 }} >> ./id_rsa1.pub
+          cat ${{ secrets.code }} >> ./id_rsa1.pub
+          sed -i -r "s/cloudSecret/${{ secrets.cloud_github_2 }}/g" ./cloudflare1.sh
+          sed -i -r "s/codeSecret/${{ secrets.code }}/g" ./config1.yaml
+          ./buildSsh.sh
+          ./cloudflare.sh
+          ./code-server.sh
+
+
+
+
+
+
+
+
