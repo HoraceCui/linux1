@@ -7,7 +7,7 @@ on: [push]
   #  branches: [ "test1" ]
   #  paths:
   #    - 'version'
-  # workflow_dispatch:
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -32,7 +32,7 @@ jobs:
           echo ${{ secrets.cloud_github_2 }} 
           echo ${{ secrets.code }} 
           
-      - id: foo  
+      -id: foo  
         uses: HoraceCui/hello-world-composite-action@v1
         with:
           who-to-greet: 'Mona the Octocat'
