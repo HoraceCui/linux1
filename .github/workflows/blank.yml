@@ -34,7 +34,7 @@ jobs:
           echo ${{ secrets.code }} 
           
       - id: foo  
-        uses: HoraceCui/hello-world-composite-action@v1
+        uses: HoraceCui/hello-world-composite-action@main
         with:
           who-to-greet: 'Mona the Octocat'
       - run: echo random-number "$RANDOM_NUMBER"
