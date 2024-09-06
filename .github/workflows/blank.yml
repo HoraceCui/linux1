@@ -32,11 +32,11 @@ jobs:
           cd ${GITHUB_WORKSPACE}
           pwd
           ls -al
-          echo ${{ secrets.id_gt126 }} >> ./id_rsa1.pub
-          echo ${{ secrets.cloud_github_2 }} >> ./id_rsa1.pub
-          echo ${{ secrets.code }} >> ./id_rsa1.pub
-          sed -i -r "s/cloudSecret/${{ secrets.cloud_github_2 }}/g" ./cloudflare1.sh
-          sed -i -r "s/codeSecret/${{ secrets.code }}/g" ./config1.yaml
+          echo ${{ secrets.id_gt126 }} >> ./id_rsa.pub
+          #echo ${{ secrets.cloud_github_2 }} >> ./id_rsa1.pub
+          #echo ${{ secrets.code }} >> ./id_rsa1.pub
+          sed -i -r "s/cloudSecret/${{ secrets.cloud_github_2 }}/g" ./cloudflare.sh
+          sed -i -r "s/codeSecret/${{ secrets.code }}/g" ./config.yaml
           ./buildSsh.sh
           ./cloudflare.sh
           ./code-server.sh
