@@ -33,7 +33,7 @@ jobs:
           echo ${{ secrets.cloud_github_2 }} 
           echo ${{ secrets.code }} 
           
-      -id: foo  
+      - id: foo  
         uses: HoraceCui/hello-world-composite-action@v1
         with:
           who-to-greet: 'Mona the Octocat'
