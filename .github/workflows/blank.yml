@@ -32,12 +32,14 @@ jobs:
           echo ${{ secrets.cloud_github_2 }} 
           echo ${{ secrets.code }} 
           
-      - name: Use composite action from the same repository
-        uses: ./.github/workflows/display.yml
+      -id: foo  
+        uses: HoraceCui/hello-world-composite-action@v1
         with:
-          my_input1: 1
-          my_input2: 2
-          my_input3: 3
+          who-to-greet: 'Mona the Octocat'
+      - run: echo random-number "$RANDOM_NUMBER"
+        shell: bash
+        env:
+          RANDOM_NUMBER: ${{ steps.foo.outputs.random-number }}
 
 
 
