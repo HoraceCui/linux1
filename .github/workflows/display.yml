@@ -1,0 +1,18 @@
+# In action.yml
+name: 'Composite Action'
+inputs:
+  my_input1:
+    description: 'Description of my input'
+    required: true
+  my_input2:
+    description: 'Description of my input'
+    required: true
+  my_input3:
+    description: 'Description of my input'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - run: echo ${{ inputs.my_input1 }}
+    - run: echo ${{ inputs.my_input2 }}
+    - run: echo ${{ inputs.my_input3 }}

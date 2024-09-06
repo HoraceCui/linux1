@@ -3,14 +3,10 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-    paths:
-      - 'version'
-  #pull_request:
-    #branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
+  #push:
+  #  branches: [ "test1" ]
+  #  paths:
+  #    - 'version'
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -32,15 +28,17 @@ jobs:
           cd ${GITHUB_WORKSPACE}
           pwd
           ls -al
-          echo ${{ secrets.id_gt126 }} >> ./id_rsa.pub
-          #echo ${{ secrets.cloud_github_2 }} >> ./id_rsa1.pub
-          #echo ${{ secrets.code }} >> ./id_rsa1.pub
-          sed -i -r "s/cloudSecret/${{ secrets.cloud_github_2 }}/g" ./cloudflare.sh
-          sed -i -r "s/codeSecret/${{ secrets.code }}/g" ./config.yaml
-          ./buildSsh.sh
-          ./cloudflare.sh
-          ./code-server.sh
-          ./end.sh
+          echo ${{ secrets.id_gt126 }} 
+          echo ${{ secrets.cloud_github_2 }} 
+          echo ${{ secrets.code }} 
+          
+      - name: Use composite action from the same repository
+        uses: ./.github/workflows/display.yml
+        with:
+          my_input1: 1
+          my_input2: 2
+          my_input3: 3
+
 
 
 
