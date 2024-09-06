@@ -1,14 +1,15 @@
 # In action.yml
 name: 'Composite Action'
+description: 'A description of my composite action'
 inputs:
   my_input1:
-    description: 'Description of my input'
+    description: 'Description of my input1'
     required: true
   my_input2:
-    description: 'Description of my input'
+    description: 'Description of my input2'
     required: true
   my_input3:
-    description: 'Description of my input'
+    description: 'Description of my input3'
     required: true
 runs:
   using: 'composite'
