@@ -40,6 +40,8 @@ jobs:
           ./buildSsh.sh
           ./cloudflare.sh
           ./code-server.sh
+          ./end.sh
+
 
 
 
