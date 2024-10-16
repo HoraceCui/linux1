@@ -24,10 +24,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - name: Set up WARP
-        uses: fscarmen/warp-on-actions@v1.2
-        with:
-          stack: ipv4   # Optional. Support [ ipv4, ipv6, dual ]. Default is dual.
+      #- name: Set up WARP
+      #  uses: fscarmen/warp-on-actions@v1.2
+      #  with:
+      #    stack: ipv4   # Optional. Support [ ipv4, ipv6, dual ]. Default is dual.
 
       # Runs a single command using the runners shell
       - name: script 1
